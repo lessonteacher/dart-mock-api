@@ -1,0 +1,22 @@
+name: ui5-playground-backend
+version: 0.0.2
+description: Simple Server w/ RethinkDB
+author: <Hugo Armstrong> <hugo.armstrong@gmail.com>
+
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+
+dependencies:
+  browser: any
+  logging: any
+  logging_handlers: any
+  console_log_handler: any
+  redstone: "^0.6.2"
+  rethinkdb_driver: "^2.0.3+1"
+  redstone_mapper: any
+  shelf: "^0.6.4+3"
+
+  di: any
+
+transformers:
+  - di
