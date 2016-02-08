@@ -1,4 +1,4 @@
-name: ui5-playground-backend
+name: dart_mock_api
 version: 0.0.2
 description: Simple Server w/ RethinkDB
 author: <Hugo Armstrong> <hugo.armstrong@gmail.com>
