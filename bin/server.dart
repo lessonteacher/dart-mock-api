@@ -16,10 +16,24 @@ main() {
   // Add plugin manager (for now assume using docker)
   server.addPlugin(getMapperPlugin(new RethinkDBManager(host: DOCKER_HOST)));
 
-  // Start the server on localhost:8888
-  server.start(port: 8888);
+  // Start the server on localhost:8080
+  server.start();
 }
 
 // Hack in to get the docker ip from annoying docker-machine else return localhost
-String _getDockerHost() =>
-    Platform.isLinux ? 'localhost' : Process.runSync('docker-machine', ['ip', 'default']).stdout.trim();
+String _getDockerHost() {
+  String host, env = Platform.environment['DOCKER_HOST'];
+
+  if (env != null) {
+    Uri uri = Uri.parse(env);
+
+    host = uri.host;
+  } else {
+    if (Platform.isLinux) return 'localhost';
+
+    // Finally try to get from here in case of Windows or Mac
+    host = Process.runSync('docker-machine', ['ip', 'default']).stdout.trim();
+  }
+
+  return host != null ? host : throw 'No DB host specified';
+}
