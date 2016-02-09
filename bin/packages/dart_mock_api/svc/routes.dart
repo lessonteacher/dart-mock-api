@@ -4,10 +4,10 @@ part of api;
  * Most basic possible api just to be able to do simple functions, no nested sets
  * */
 @api.Route('/')
-welcome() => 'Welcome to Api Town!';
+welcome() => 'Welcome to api town!';
 
 @api.Route('/:resource', methods: const [api.GET]) // Get the collection
-getResource(@api.Attr() dbConn, String resource) => _getAll(dbConn, resource);
+getResource(@api.Attr() dbConn, String resource) => _getAll(dbConn, resource, api.request.requestedUri.queryParameters);
 
 @api.Route('/:resource/:id', methods: const [api.GET]) // Get an individual entry
 getResourceId(@api.Attr() dbConn, String resource, String id) => _get(dbConn, resource, id);
