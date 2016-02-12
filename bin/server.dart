@@ -6,8 +6,8 @@ import 'package:redstone_mapper/plugin.dart';
 
 import '../lib/api.dart';
 
-final String DOCKER_HOST = _getDockerHost();
-// final String DOCKER_HOST = '192.168.99.100';
+// final String DOCKER_HOST = _getDockerHost();
+final String DOCKER_HOST = 'rethinkdb';
 
 main() {
   // Setup some random logging
@@ -22,18 +22,10 @@ main() {
 
 // Hack in to get the docker ip from annoying docker-machine else return localhost
 String _getDockerHost() {
-  String host, env = Platform.environment['DOCKER_HOST'];
+  // if (Platform.isLinux) return 'localhost';
 
-  if (env != null) {
-    Uri uri = Uri.parse(env);
+  // Just assume on docker for now
+  // var host = Process.runSync('docker-machine', ['ip', 'default']).stdout.trim();
 
-    host = uri.host;
-  } else {
-    if (Platform.isLinux) return 'localhost';
-
-    // Finally try to get from here in case of Windows or Mac
-    host = Process.runSync('docker-machine', ['ip', 'default']).stdout.trim();
-  }
-
-  return host != null ? host : throw 'No DB host specified';
+  // return host != null ? host : throw 'No DB host specified';
 }

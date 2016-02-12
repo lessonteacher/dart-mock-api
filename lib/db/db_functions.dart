@@ -5,8 +5,8 @@ bool createTables = false;
 // Read a collection of data (allows basic filter)
 dynamic _getAll(dbConn, name, parms) async {
   return parms.isEmpty
-      ? r.table(name).run(dbConn).then((c) => c.toList()).catchError((err) => print(err.message))
-      : r.table(name).filter(parms).run(dbConn).then((c) => c.toList()).catchError((err) => print(err.message));
+      ? r.table(name).limit(50).run(dbConn).then((c) => c.toList()).catchError((err) => print(err.message))
+      : r.table(name).filter(parms).limit(50).run(dbConn).then((c) => c.toList()).catchError((err) => print(err.message));
 }
 
 // Read a single entry
