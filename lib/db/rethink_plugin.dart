@@ -10,8 +10,7 @@ class RethinkDBManager extends DatabaseManager {
 
   // Construct DB manager
   RethinkDBManager({String this.db: 'test', String this.host: "localhost", int this.port: 28015}) {
-    print('DB Manager setup for $host:$port');
-    // api.redstoneLogger.info('DB Manager setup for $host:$port');
+    print('Connecting to database at $host:$port');
   }
 
   // @override // Get connection from DatabaseManager
