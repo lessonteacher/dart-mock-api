@@ -47,7 +47,7 @@ Now the easiest way ever... to use this api you can just use the built image fro
 docker run -p 8000:8000 -p 8080:8080 -d lessonteacher/mock-api
 ```
 
-After this you can find the api at `localhost:8000` and the rethinkdb admin dashboard at `localhost:8888` (unless you are on windows/mac, then obviously its `$(docker machine ip _whatever_):8000` etc) 
+After this you can find the api at `localhost:8000` and the rethinkdb admin dashboard at `localhost:8080` (unless you are on windows/mac, then obviously its `$(docker machine ip _whatever_):8000` etc) 
 
 
 If you want to not lose your data when the container is removed you might want to use some kind of mount volume like
