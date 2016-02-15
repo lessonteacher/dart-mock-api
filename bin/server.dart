@@ -15,8 +15,8 @@ main() {
   // Add plugin manager (for now assume using docker)
   server.addPlugin(getMapperPlugin(new RethinkDBManager(host: mockDbHost)));
 
-  // Start the server on localhost:8080
-  server.start();
+  // Start the server on localhost:8000
+  server.start(port: 8000);
 }
 
 /**
