@@ -31,7 +31,13 @@ deleteResource(@api.Attr() dbConn, String resource, @api.Body(api.JSON) Map json
 /* Add in interceptors */
 @api.Interceptor(r'/.*')
 handleCORS() async {
-  if (api.request.method != "OPTIONS") await api.chain.next();
+  if (api.request.method != 'OPTIONS') await api.chain.next();
 
-  return api.response.change(headers: {"Access-Control-Allow-Origin": "*"});
+  return api.response
+    .change(
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers':' X-Requested-With, Content-Type, Content-Length',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,OPTIONS'
+      });
 }
